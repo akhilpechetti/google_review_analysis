@@ -89,7 +89,7 @@ def value_coun_graph(x, xlabel, ylabel, title):
 
 #a=st.sidebar.radio('Select catogery of Reviews',['reviews with 5 star rating','reviews with 4 star rating','None'])
 cat = st.sidebar.selectbox(
-    'Catogery', ['View Reviews', 'Sentiment analysis', 'Visuvalization'])
+    'Catogery', ['View Reviews', 'Sentiment analysis', 'Visuvalizations'])
 col = st.container()
 with col:
     sel_col, disp_col = st.columns(2)
@@ -192,8 +192,8 @@ if cat == 'Sentiment analysis':
         st.dataframe(analysis_df)
         if st.download_button(label='Download CSV', data=analysis_df.to_csv(), mime='text/csv', file_name='Reviews with Final sentiment.csv'):
             st.balloons()
-if cat == 'Visuvalization':
-    menu = ['WordCloud Image', 'Sentiment vs No of Reviews', 'Rating count']
+if cat == 'Visuvalizations':
+    menu = ['WordCloud Image', 'Sentiment vs No of Reviews', 'Ratings count']
     vis_cat = st.sidebar.radio('Select', menu)
     if vis_cat == 'WordCloud Image':
         st.header('WordCloud Image of most words used:')
@@ -207,7 +207,7 @@ if cat == 'Visuvalization':
             getanalysis)
         value_coun_graph(analysis_df['Type of comment'],
                          'Sentiment', 'No of Reviews', 'Sentiment analysis')
-    if vis_cat == 'Rating count':
+    if vis_cat == 'Ratings count':
         scores_df1 = df.copy()
         scores_df1['Polarity'] = scores_df1['Reviews'].apply(polarity)
         scores_df1['Subjectivity'] = scores_df1['Reviews'].apply(subjectivity)
@@ -215,4 +215,4 @@ if cat == 'Visuvalization':
         analysis_df['Type of comment'] = analysis_df['Polarity'].apply(
             getanalysis)
         value_coun_graph(analysis_df['Reviewer_rating'],
-                         'Rating', 'Count', 'Ratings vs count')
+                         'Rating', 'Reviews Count', 'Ratings vs Reviews count')
