@@ -94,7 +94,7 @@ col = st.container()
 with col:
     sel_col, disp_col = st.columns(2)
     app_id = sel_col.text_input('Enter app name')
-    number_of_reviews = sel_col.number_input('How many reviews you need?')
+    number_of_reviews = sel_col.number_input('How many reviews you need?',max_value=200)
     app_name = app_name(app_id)
     disp_col.subheader('Selected app')
     disp_col.write(app_name)
