@@ -89,7 +89,7 @@ def value_coun_graph(x, xlabel, ylabel, title):
 
 #a=st.sidebar.radio('Select catogery of Reviews',['reviews with 5 star rating','reviews with 4 star rating','None'])
 cat = st.sidebar.selectbox(
-    'Catogery', ['View Reviews', 'Sentiment analysis', 'Visuvalization'])
+    'Catogery', ['View Reviews', 'Sentiment analysis', 'Visuvalizations'])
 col = st.container()
 with col:
     sel_col, disp_col = st.columns(2)
@@ -159,7 +159,7 @@ if cat == 'Sentiment analysis':
         st.dataframe(analysis_df)
         st.download_button(label='Download CSV', data=analysis_df.to_csv(
         ), mime='text/csv', file_name='Reviews with Final sentiment.csv')
-if cat == 'Visuvalization':
+if cat == 'Visuvalizations':
     menu = ['WordCloud Image', 'Sentiment vs No of Reviews', 'Rating count']
     vis_cat = st.sidebar.radio('Select', menu)
     if vis_cat == 'WordCloud Image':
@@ -182,4 +182,4 @@ if cat == 'Visuvalization':
         analysis_df['Type of comment'] = analysis_df['Polarity'].apply(
             getanalysis)
         value_coun_graph(analysis_df['Reviewer_rating'],
-                         'Rating', 'Count', 'Ratings vs count')
+                         'Rating', 'Reviews Count', 'Ratings vs reviews count')
