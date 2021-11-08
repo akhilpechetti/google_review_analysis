@@ -23,6 +23,7 @@ nltk.download('stopwords')
 ps = PorterStemmer()
 all_stopwords = stopwords.words('english')
 all_stopwords.remove('not')
+@st.cache(persist=True)
 
 
 def app_name(app_id):
